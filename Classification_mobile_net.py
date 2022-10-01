@@ -38,7 +38,7 @@ def addTopModelMobileNet(bottom_model, num_classes):
 
 num_classes = 5
 
-
+FC_Head = addTopModelMobileNet(MobileNet, num_classes)
 
 model = Model(inputs = MobileNet.input, outputs = FC_Head)
 
@@ -67,7 +67,7 @@ train_generator = train_datagen.flow_from_directory(
                         )
 
 validation_generator = validation_datagen.flow_from_directory(
-                            validation_data_dir,
+                            validation_datadir,
                             target_size=(img_rows,img_cols),
                             batch_size=batch_size,
                             class_mode='categorical')
@@ -101,8 +101,8 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy']
               )
 
-nb_train_samples = 24176
-nb_validation_samples = 3006
+nb_train_samples = 24177
+nb_validation_samples = 3007
 
 epochs = 25
 
