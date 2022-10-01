@@ -1,7 +1,7 @@
 from __future__ import print_function
 import keras
-
-
+"from keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential"
 from keras.layers import Dense,Dropout,Activation,Flatten,BatchNormalization
 from keras.layers import Conv2D,MaxPooling2D
 import os
@@ -144,6 +144,12 @@ epochs=25
 
 history=model.fit_generator(
                 train_generator,
+		"steps_per_epoch=nb_train_samples//batch_size,
+                epochs=epochs,
+                callbacks=callbacks,
+                validation_data=validation_generator,
+                validation_steps=nb_validation_samples//batch_size)"
+
                 
 
 
