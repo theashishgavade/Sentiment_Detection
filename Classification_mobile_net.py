@@ -73,6 +73,7 @@ validation_generator = validation_datagen.flow_from_directory(
                             class_mode='categorical')
 
 from keras.optimizers import RMSprop,Adam
+from keras.optimizers import RMSprop,monitor
 from keras.callbacks import ModelCheckpoint,EarlyStopping,ReduceLROnPlateau
 
 checkpoint = ModelCheckpoint(
