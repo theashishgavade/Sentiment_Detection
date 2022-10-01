@@ -10,13 +10,13 @@ img_rows,img_cols = 224,224
 
 MobileNet = MobileNet(weights='imagenet',include_top=False,input_shape=(img_rows,img_cols,3))
 
-# Here we freeze the last 4 layers
+# Here we freeze the last 4 layers and started printing new mobile layers
 # Layers are set to trainable as True by default
 
 for layer in MobileNet.layers:
     layer.trainable = True
 
-# Let's print our layers
+# Let's print our Mobilenet layers
 for (i,layer) in enumerate(MobileNet.layers):
     
 
@@ -47,14 +47,14 @@ print(model.summary())
 train_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
 validation_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
 
-
-
-
-
-
-
-
-
+"train_datagen = ImageDataGenerator(
+                    rescale=1./255,
+                    rotation_range=30,
+                    width_shift_range=0.3,
+                    height_shift_range=0.3,
+                    horizontal_flip=True,
+                    fill_mode='nearest'
+                                   )"
 validation_datagen = ImageDataGenerator(rescale=1./255)
 
 batch_size = 32
