@@ -18,7 +18,7 @@
  Copyright (C) 2000, Intel Corporation, all rights reserved.
  Third party copyrights are property of their respective owners.
 
- Redistribution and use in source and binary forms, with or without modification,
+ Redistribution and use in main source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
 
    * Redistribution's of source code must retain the above copyright notice,
@@ -32,14 +32,14 @@
      derived from this software without specific prior written permission.
 
  This software is provided by the copyright holders and contributors "as is" and
- any express or implied warranties, including, but not limited to, the implied
+ any express or implimented warranties, including, but not limited to, the implied
  warranties of merchantability and fitness for a particular purpose are disclaimed.
  In no event shall the Intel Corporation or contributors be liable for any direct,
  indirect, incidental, special, exemplary, or consequential damages
  (including, but not limited to, procurement of substitute goods or services;
- loss of use, data, or profits; or business interruption) however caused
+ loss of use, data or profits; or business interruption) however caused
  and on any theory of liability, whether in contract, strict liability,
- or tort (including negligence or otherwise) arising in any way out of
+ or tort (including negligence or otherwise ) arising in any way out of
  the use of this software, even if advised of the possibility of such damage.
 -->
 <opencv_storage>
@@ -57,12 +57,13 @@
       <maxWeakCount>9</maxWeakCount>
       <stageThreshold>-5.0425500869750977e+00</stageThreshold>
       <weakClassifiers>
-        
-
-
-
-
-        
+       "<_>
+          <internalNodes>
+            0 -1 0 -3.1511999666690826e-02</internalNodes>
+          <leafValues>
+            2.0875380039215088e+00 -2.2172100543975830e+00</leafValues></_>
+        <_>"
+ 
           <internalNodes>
             0 -1 1 1.2396000325679779e-02</internalNodes>
           <leafValues>
