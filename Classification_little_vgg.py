@@ -1,14 +1,14 @@
 from __future__ import print_function
 import keras
-"from keras.preprocessing.image import ImageDataGenerator
-from keras.models import Sequential"
+from keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential
 from keras.layers import Dense,Dropout,Activation,Flatten,BatchNormalization
 from keras.layers import Conv2D,MaxPooling2D
 import os
 
-
-
-
+num_classes = 5
+img_rows,img_cols = 48,48
+batch_size = 32
 
 train_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
 validation_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
@@ -139,7 +139,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 
 nb_train_samples = 24176
-nb_validation_samples = 3006
+nb_validation_samples = 3007
 epochs=25
 
 history=model.fit_generator(
