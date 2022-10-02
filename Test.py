@@ -27,7 +27,7 @@ class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
 #         return (x,w,y,h),np.zeros((50,50),np.uint8,roi_grey),img
 #     return (x,w,y,h),roi_gray,img
 
-
+#take input 
 cap = cv2.VideoCapture(0)
 
 
@@ -43,7 +43,7 @@ while True:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h,x:x+w]
         roi_gray = cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
-    # rect,face,image = face_detector(frame)
+        rect,face,image = face_detector(frame)
 
 
         if np.sum([roi_gray])!=0:
@@ -59,12 +59,14 @@ while True:
             cv2.putText(frame,label,label_position,cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
         else:
             cv2.putText(frame,'No Face Found',(20,60),cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
-    
+            cv2.imshow('Emotion Detector',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+#Exit
 cap.release()
 cv2.destroyAllWindows()
+
 
 
 
