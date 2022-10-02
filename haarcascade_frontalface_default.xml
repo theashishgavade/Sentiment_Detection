@@ -328,7 +328,7 @@
             -1.8294479846954346e+00 9.9561996757984161e-02</leafValues></_></weakClassifiers></_>
     <_>
       <maxWeakCount>32</maxWeakCount>
-      
+      <stageThreshold>-4.4531588554382324e+00</stageThreshold>
       <weakClassifiers>
         <_>
           <internalNodes>
