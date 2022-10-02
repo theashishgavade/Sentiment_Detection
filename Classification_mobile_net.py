@@ -2,7 +2,7 @@ from keras.applications import MobileNet
 from keras.models import Sequential,Model 
 from keras.layers import Dense,Dropout,Activation,Flatten,GlobalAveragePooling2D
 from keras.layers import Conv2D,MaxPooling2D,ZeroPadding2D
-
+from keras.layers.normalization import BatchNormalization
 from keras.preprocessing.image import ImageDataGenerator
 
 # MobileNet is designed to work with images of dim 224,224
@@ -44,14 +44,14 @@ model = Model(inputs = MobileNet.input, outputs = FC_Head)
 
 print(model.summary())
 
-train_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
-validation_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
+train_data_dir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
+validation_data_dir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
 
 "train_datagen = ImageDataGenerator(
                     rescale=1./255,
-                    rotation_range=30,
-                    width_shift_range=0.3,
-                    height_shift_range=0.3,
+                    rotation_range=35,
+                    width_shift_range=0.5,
+                    height_shift_range=0.5,
                     horizontal_flip=True,
                     fill_mode='nearest'
                                    )"
@@ -102,7 +102,7 @@ model.compile(loss='categorical_crossentropy',
               )
 
 nb_train_samples = 24177
-nb_validation_samples = 3007
+nb_validation_samples = 3005
 
 epochs = 25
 
