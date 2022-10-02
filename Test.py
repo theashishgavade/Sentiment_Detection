@@ -56,7 +56,7 @@ while True:
             preds = classifier.predict(roi)[0]
             label=class_labels[preds.argmax()]
             label_position = (x,y)
-            
+            cv2.putText(frame,label,label_position,cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
         else:
             cv2.putText(frame,'No Face Found',(20,60),cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
     
