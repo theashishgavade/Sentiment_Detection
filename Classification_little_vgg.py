@@ -1,17 +1,19 @@
 from __future__ import print_function
 import keras
-"from keras.preprocessing.image import ImageDataGenerator
-from keras.models import Sequential"
+from keras.preprocessing.image import ImageDataGenerator
+
+from keras.models import Sequential
+main
 from keras.layers import Dense,Dropout,Activation,Flatten,BatchNormalization
-from keras.layers import Conv2D,MaxPooling2D
+from keras.layers import conv2D,MaxPooling2D
 import os
 
+num_classes = 5
+img_rows,img_cols = 48,48
+batch_size = 32
 
-
-
-
-train_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
-validation_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
+train_data_dir = '/Users/durgeshthakkur/Deep Learning Stuff/Emotion Classification/fer2013/train'
+validation_data_dir = '/Users/durgeshthakkur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
 
 train_datagen = ImageDataGenerator(
 					rescale=1./255,
@@ -48,11 +50,11 @@ model = Sequential()
 
 model.add(Conv2D(32,(3,3),padding='same',kernel_initializer='he_normal',input_shape=(img_rows,img_cols,1)))
 model.add(Activation('elu'))
-
-
-
-
-
+model.add(BatchNormalization())
+model.add(Conv2D(32,(3,3),padding='same',kernel_initializer='he_normal',input_shape=(img_rows,img_cols,1)))
+model.add(Activation('elu'))
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
 
 # Block-2 
@@ -106,7 +108,7 @@ model.add(Dropout(0.5))
 # Block-7
 
 model.add(Dense(num_classes,kernel_initializer='he_normal'))
-model.add(Activation('softmax'))
+model.add(Activation('softmax_1'))
 
 print(model.summary())
 
@@ -139,7 +141,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 
 nb_train_samples = 24176
-nb_validation_samples = 3006
+nb_validation_samples = 3007
 epochs=25
 
 history=model.fit_generator(
@@ -148,7 +150,7 @@ history=model.fit_generator(
                 epochs=epochs,
                 callbacks=callbacks,
                 validation_data=validation_generator,
-                validation_steps=nb_validation_samples//batch_size)"
+                validation_steps=nb_validation_samples//batch_size)
 
                 
 

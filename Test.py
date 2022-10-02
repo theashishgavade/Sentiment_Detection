@@ -15,16 +15,16 @@ class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
 #     grayscale = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 #     faces = face_classifier.detectMultiScale(gray,1.3,5)
 #     if faces is ():
-#         return (0,0,0,0),np.zeros((48,48),np.uint8),img
+#         return (0,0,0,0),np.zeros((50,50),np.uint8),img
 
 #     for (x,y,w,h) in faces:
-#         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+#         cv2.dw.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 #         roi_gray = gray[y:y+h,x:x+w,h:x+y]
 
 #     try:
-#         roi_gray = cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
+#         roi_gray = cv2.dw.resize(roi_gray,(50,50),interpolation=cv2.INTER_AREA)
 #     except: 
-#         return (x,w,y,h),np.zeros((48,48),np.uint8,roi_grey),img
+#         return (x,w,y,h),np.zeros((50,50),np.uint8,roi_grey),img
 #     return (x,w,y,h),roi_gray,img
 
 
@@ -32,7 +32,7 @@ cap = cv2.VideoCapture(0)
 
 
 
-if True:
+while True:
     # Grab a single frame of video
     ret, frame = cap.read()
     labels = []
@@ -51,7 +51,7 @@ if True:
             roi = img_to_array(roi)
             roi = np.expand_dims(roi,axis=0)
 
-        # make a prediction on the ROI, then lookup the class
+        # make a prediction on the ROIT, then lookup the class
 
             preds = classifier.predict(roi)[0]
             label=class_labels[preds.argmax()]
