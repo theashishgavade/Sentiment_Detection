@@ -18,7 +18,7 @@ for layer in MobileNet.layers:
 
 # Let's print our Mobilenet layers
 for (i,layer) in enumerate(MobileNet.layers):
-    
+    print(str(i),layer.__class__.__name__,layer.trainable)
 
 def addTopModelMobileNet(bottom_model, num_classes):
     """creates the top or head of the model that will be 
