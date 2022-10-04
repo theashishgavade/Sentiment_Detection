@@ -74,7 +74,16 @@ validation_generator = validation_datagen.flow_from_directory(
 
 from keras.optimizers import RMSprop,Adam
 from keras.callbacks import ModelCheckpoint,EarlyStopping,ReduceLROnPlateau
-
+try:
+  f = open("Test.txt")
+  try:
+    f.write("Lorum Ipsum")
+  except:
+    print("Something went wrong when writing to the file")
+  finally:
+    f.close()
+except:
+  print("Something went wrong when opening the file")
 checkpoint = ModelCheckpoint(
                              'emotion_face_mobilNet.h5',
                              monitor='val_loss',
