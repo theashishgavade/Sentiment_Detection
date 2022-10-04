@@ -21,11 +21,18 @@ class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
 #         cv2.dw.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 #         roi_gray = gray[y:y+h,x:x+w,h:x+y]
 
-#     try:
-#         roi_gray = cv2.dw.resize(roi_gray,(50,50),interpolation=cv2.INTER_AREA)
-#     except: 
-#         return (x,w,y,h),np.zeros((50,50),np.uint8,roi_grey),img
-#     return (x,w,y,h),roi_gray,img
+     try:
+         roi_gray = cv2.dw.resize(roi_gray,(50,50),interpolation=cv2.INTER_AREA)
+     except: 
+         return (x,w,y,h),np.zeros((50,50),np.uint8,roi_grey),img
+     return (x,w,y,h),roi_gray,img
+     try:
+     k = 5//0 # raises divide by zero exception.
+     print(k)
+    
+# handles zerodivision exception    
+except ZeroDivisionError:   
+    print("Can't divide by zero")
 
 #take input 
 cap = cv2.VideoCapture(0)
