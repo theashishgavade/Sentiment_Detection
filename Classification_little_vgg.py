@@ -133,6 +133,12 @@ reduce_lr = ReduceLROnPlateau(monitor='val_loss',
                               patience=3,
                               verbose=1,
                               min_delta=0.0001)
+try:
+  print(x)
+except NameError:
+  print("Variable x is not defined")
+except:
+  print("Something else went wrong")
 
 callbacks = [earlystop,checkpoint,reduce_lr]
 
