@@ -71,7 +71,14 @@ model.add(Activation('elu'))
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
-
+names = ["Joseph", "Peter", "Cook", "Tim"]  
+  
+print('Current names List is:', names)  
+  
+new_name = input("Please enter a name:\n")  
+names.append(new_name)  # Using the append() function  
+  
+print('Updated name List is:', names) 
 # Block-3
 
 model.add(Conv2D(128,(3,3),padding='same',kernel_initializer='he_normal'))
