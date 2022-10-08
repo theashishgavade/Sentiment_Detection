@@ -56,7 +56,9 @@ validation_data_dir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Class
                     fill_mode='nearest'
                                    )"
 validation_datagen = ImageDataGenerator(rescale=1./255)
-
+x = 10
+if x > 5:
+    raise Exception('x should not exceed 5. The value of x was: {}'.format(x))
 batch_size = 32
 
 train_generator = train_datagen.flow_from_directory(
