@@ -47,7 +47,11 @@ validation_generator = validation_datagen.flow_from_directory(
 model = Sequential()
 
 # Block-1
-
+print( 0 / 0 ))
+  File "<stdin>", line 1
+    print( 0 / 0 ))
+                  ^
+SyntaxError: invalid syntax
 model.add(Conv2D(32,(3,3),padding='same',kernel_initializer='he_normal',input_shape=(img_rows,img_cols,1)))
 model.add(Activation('elu'))
 model.add(BatchNormalization())
