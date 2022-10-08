@@ -113,7 +113,10 @@ model.add(Dropout(0.5))
 
 model.add(Dense(num_classes,kernel_initializer='he_normal'))
 model.add(Activation('softmax_1'))
-
+try:
+    linux_interaction()
+except:
+    print('Linux function was not executed')
 print(model.summary())
 
 from keras.optimizers import RMSprop,SGD,Adam
