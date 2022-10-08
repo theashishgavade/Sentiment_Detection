@@ -122,6 +122,14 @@ history = model.fit_generator(
             callbacks=callbacks,
             validation_data=validation_generator,
             validation_steps=nb_validation_samples//batch_size)
-
+try:
+    linux_interaction()
+    with open('file.log') as file:
+        read_data = file.read()
+except FileNotFoundError as fnf_error:
+    print(fnf_error)
+except AssertionError as error:
+    print(error)
+    print('Linux linux_interaction() function was not executed')
 
 
