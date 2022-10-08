@@ -46,7 +46,10 @@ print(model.summary())
 
 train_data_dir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
 validation_data_dir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
-
+try:
+    linux_interaction()
+except:
+    pass
 "train_datagen = ImageDataGenerator(
                     rescale=1./255,
                     rotation_range=35,
