@@ -84,7 +84,11 @@ model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
 
 # Block-4 
-
+try:
+    with open('file.log') as file:
+        read_data = file.read()
+except FileNotFoundError as fnf_error:
+    print(fnf_error)
 model.add(Conv2D(256,(3,3),padding='same',kernel_initializer='he_normal'))
 model.add(Activation('elu'))
 model.add(BatchNormalization())
