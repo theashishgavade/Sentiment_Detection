@@ -24,6 +24,25 @@ def addTopModelMobileNet(bottom_model, num_classes):
     """creates the top or head of the model that will be 
     placed ontop of the bottom layers"""
 
+# Python3 code to demonstrate working of
+# Alternate K Length characters
+# Using list comprehension + join()
+
+# initializing string
+test_str = 'geeksgeeksisbestforgeeks'
+
+# printing original string
+print("The original string is : " + str(test_str))
+
+# initializing K
+K = 4
+
+# slicing K using slicing, join for converting back to string
+res = ''.join([test_str[idx : idx + K] for idx in range(0, len(test_str), K * 2)])
+
+# printing result
+print("Transformed String : " + str(res))
+
    top_model = bottom_model.output
     top_model = GlobalAveragePooling2D()(top_model)
     top_model = Dense(1024,activation='relu')(top_model)
