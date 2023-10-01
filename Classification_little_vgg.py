@@ -34,6 +34,7 @@ train_generator = train_datagen.flow_from_directory(
 					batch_size=batch_size,
 					class_mode='categorical',
 					shuffle=True)
+model.add(Conv2D(32, (3, 3), padding='same', kernel_initializer='he_normal', input_shape=(img_rows, img_cols, 1)))
 
 validation_generator = validation_datagen.flow_from_directory(
 							validation_data_dir,
