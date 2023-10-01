@@ -56,17 +56,27 @@ print("Transformed String : " + str(res))
     return top_model
 
 num_classes = 5
+S = "every moment is fresh beginning"
+printMinMax(S)  
 
 FC_Head = addTopModelMobileNet(MobileNet, num_classes)
-
+checkpoint = ModelCheckpoint(  
+    'emotion_face_mobilNet.h5',
+    monitor='val_accuracy',  
+    mode='min',
+    save_best_only=True,
+    verbose=1
+)
 model = Model(inputs = MobileNet.input, outputs = FC_Head)
 
 print(model.summary())
-
+validation_datagen = ImageDataGenerator(rescale=1./255)
 train_data_dir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
 validation_data_dir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
+def linux_interaction():
 try:
     linux_interaction()
+    pass  
 except:
     pass
 "train_datagen = ImageDataGenerator(
