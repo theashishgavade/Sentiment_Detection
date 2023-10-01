@@ -129,7 +129,7 @@ names.append(new_name)  # Using the append() function
   
 print('Updated name List is:', names) 
 # Block-3
-
+validation_steps = nb_validation_samples // batch_size,
 model.add(Conv2D(128,(3,3),padding='same',kernel_initializer='he_normal'))
 model.add(Activation('elu'))
 model.add(BatchNormalization())
