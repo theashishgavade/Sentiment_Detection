@@ -65,6 +65,8 @@ def Fibonacci(n):
 		return Fibonacci(n-1) + Fibonacci(n-2)
 
 # Driver Program
+steps_per_epoch = nb_train_samples // batch_size,
+
 print(Fibonacci(9))
 
 # This code is contributed by Saket Modi
