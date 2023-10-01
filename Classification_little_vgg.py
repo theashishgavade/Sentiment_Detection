@@ -7,8 +7,7 @@ main
 from keras.layers import Dense,Dropout,Activation,Flatten,BatchNormalization
 from keras.layers import conv2D,MaxPooling2D
 import os
-
-num_classes = 5
+img_rows, img_cols = 48, 48  num_classes = 5
 img_rows,img_cols = 48,48
 batch_size = 32
 
