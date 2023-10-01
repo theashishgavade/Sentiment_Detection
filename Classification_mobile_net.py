@@ -42,16 +42,32 @@ res = ''.join([test_str[idx : idx + K] for idx in range(0, len(test_str), K * 2)
 
 # printing result
 print("Transformed String : " + str(res))
+try:  # Line 45
+    linux_interaction()  # Line 46
+except Exception as e:  # Line 47
+    print("Error:", str(e))  
 
    top_model = bottom_model.output
     top_model = GlobalAveragePooling2D()(top_model)
     top_model = Dense(1024,activation='relu')(top_model)
-    
+
+train_datagen = ImageDataGenerator(  
+                 rescale=1./255,
+                 rotation_range=35,
+                 width_shift_range=0.5,
+                 height_shift_range=0.5,
+                 horizontal_flip=True,
+                 fill_mode='nearest'
+)
+
     top_model = Dense(1024,activation='relu')(top_model)
     
     top_model = Dense(512,activation='relu')(top_model)
-    
-    top_model = Dense(num_classes,activation='softmax')(top_model)
+    validation_datadir = '/Users/durgeshwarthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'  # Line 52
+    x = 10  
+     if x > 5:  
+    		raise Exception('x should not exceed 5. The value of x was: {}'.format(x))  # Line 56
+top_model = Dense(num_classes,activation='softmax')(top_model)
 
     return top_model
 
