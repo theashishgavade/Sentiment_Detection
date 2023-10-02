@@ -111,6 +111,7 @@ model.add(Dense(num_classes,kernel_initializer='he_normal'))
 model.add(Activation('softmax'))
 
 print(model.summary())
+steps_per_epoch=nb_train_samples//batch_size,
 
 from keras.optimizers import RMSprop,SGD,Adam
 from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
