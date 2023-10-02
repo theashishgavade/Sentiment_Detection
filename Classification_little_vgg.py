@@ -72,6 +72,7 @@ model.add(Activation('elu'))
 model.add(BatchNormalization())
 model.add(Conv2D(128,(3,3),padding='same',kernel_initializer='he_normal'))
 model.add(Activation('elu'))
+nb_train_samples = 24176
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
