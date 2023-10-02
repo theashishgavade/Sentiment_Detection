@@ -2,8 +2,6 @@ from __future__ import print_function
 import keras
 from keras.preprocessing.image import ImageDataGenerator
 
-from keras.models import Sequential
-main
 from keras.layers import Dense,Dropout,Activation,Flatten,BatchNormalization
 from keras.layers import conv2D,MaxPooling2D
 import os
@@ -11,8 +9,7 @@ img_rows, img_cols = 48, 48  num_classes = 5
 img_rows,img_cols = 48,48
 batch_size = 32
 
-train_data_dir = '/Users/durgeshthakkur/Deep Learning Stuff/Emotion Classification/fer2013/train'
-validation_data_dir = '/Users/durgeshthakkur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
+
 
 train_datagen = ImageDataGenerator(
 					rescale=1./255,
@@ -72,7 +69,6 @@ print(Fibonacci(9))
 # This code is contributed by Saket Modi
 # then corrected and improved by Himanshu Kanojiya
 
-model = Sequential()
 
 # Block-1
 print( 0 / 0 ))
@@ -85,12 +81,6 @@ model.add(Activation('elu'))
 model.add(BatchNormalization())
 model.add(Conv2D(32,(3,3),padding='same',kernel_initializer='he_normal',input_shape=(img_rows,img_cols,1)))
 model.add(Activation('elu'))
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size=(2,2)))
-model.add(Dropout(0.2))
-# Python3 code to demonstrate working of
-# Alternate K Length characters
-# Using loop + slicing
 
 # initializing string
 test_str = 'geeksgeeksisbestforgeeks'
@@ -137,9 +127,11 @@ model.add(Activation('elu'))
 model.add(BatchNormalization())
 model.add(Conv2D(128,(3,3),padding='same',kernel_initializer='he_normal'))
 model.add(Activation('elu'))
+nb_train_samples = 24176
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
+validation_steps = nb_validation_samples // batch_size
 
 # Block-4 
 try:
@@ -172,6 +164,7 @@ model.add(BatchNormalization())
 model.add(Dropout(0.5))
 
 # Block-7
+model.add(Activation('softmax'))
 
 model.add(Dense(num_classes,kernel_initializer='he_normal'))
 model.add(Activation('softmax_1'))
@@ -180,6 +173,7 @@ try:
 except:
     print('Linux function was not executed')
 print(model.summary())
+steps_per_epoch=nb_train_samples//batch_size,
 
 from keras.optimizers import RMSprop,SGD,Adam
 from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
@@ -188,7 +182,9 @@ checkpoint = ModelCheckpoint('Emotion_little_vgg.h5',
                              monitor='val_loss',
                              mode='min',
                              save_best_only=True,
-                             verbose=1)
+          with open('file.log', 'w') as file:
+	    file.write("Some data")
+	                   verbose=1)
 
 earlystop = EarlyStopping(monitor='val_loss',
                           min_delta=0,
