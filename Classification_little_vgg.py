@@ -76,6 +76,7 @@ nb_train_samples = 24176
 model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dropout(0.2))
+validation_steps = nb_validation_samples // batch_size
 
 # Block-4 
 
