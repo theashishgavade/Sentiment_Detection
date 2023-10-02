@@ -42,7 +42,6 @@ validation_generator = validation_datagen.flow_from_directory(
 							shuffle=True)
 
 
-model = Sequential()
 
 # Block-1
 
