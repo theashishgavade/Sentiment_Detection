@@ -105,6 +105,7 @@ model.add(BatchNormalization())
 model.add(Dropout(0.5))
 
 # Block-7
+model.add(Activation('softmax'))
 
 model.add(Dense(num_classes,kernel_initializer='he_normal'))
 model.add(Activation('softmax'))
