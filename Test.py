@@ -3,6 +3,9 @@ import numpy as np
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 import smtplib
+import os
+from collections import Counter
+from datetime import datetime
 
 # Load the face classifier and emotion classifier
 face_classifier = cv2.CascadeClassifier('/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/haarcascade_frontalface_default.xml')
@@ -10,6 +13,7 @@ classifier = load_model('/Users/durgeshthakur/Deep Learning Stuff/Emotion Classi
 
 # Define class labels for emotions
 class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise']
+emotion_count = Counter()
 
 def face_detector(img):
     # Convert image to grayscale
@@ -55,24 +59,35 @@ while True:
             # Make a prediction on the ROI and lookup the class
             preds = classifier.predict(roi)[0]
             label = class_labels[preds.argmax()]
+            emotion_count[label] += 1  # Update emotion count
             label_position = (x, y)
             cv2.putText(frame, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
         else:
             cv2.putText(frame, 'No Face Found', (20, 60), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
 
+    # Display the most common emotion
+    if emotion_count:
+        most_common_emotion = emotion_count.most_common(1)[0][0]
+        cv2.putText(frame, f'Most Common: {most_common_emotion}', (20, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+
     cv2.imshow('Emotion Detector', frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord('q'):  # Press 'q' to quit
         break
+    elif key == ord('s'):  # Press 's' to take a screenshot
+        screenshot_filename = f"screenshot_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+        cv2.imwrite(screenshot_filename, frame)
+        print(f"Screenshot saved as {screenshot_filename}")
 
 # Email notification logic
 sender_mail = 'sender@fromdomain.com'
 receivers_mail = ['receiver@todomain.com']
 message = """From: From Person <%s>  
 To: To Person <%s>  
-Subject: Sending SMTP e-mail   
-This is a test e-mail message.  
-""" % (sender_mail, ', '.join(receivers_mail))
+Subject: Emotion Detection Notification   
+Most Common Emotion Detected: %s  
+""" % (sender_mail, ', '.join(receivers_mail), most_common_emotion)
 
 try:
     smtpObj = smtplib.SMTP('localhost')
